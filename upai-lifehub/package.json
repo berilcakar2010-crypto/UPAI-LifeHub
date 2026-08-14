@@ -1,0 +1,40 @@
+{
+  "name": "upai-lifehub",
+  "version": "4.0.0",
+  "private": true,
+  "homepage": ".",
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/app": "^6.0.1",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/local-notifications": "^6.1.0",
+    "@capacitor/splash-screen": "^6.0.2",
+    "@capacitor/status-bar": "^6.0.1",
+    "@capacitor-community/speech-recognition": "^6.0.0",
+    "@capacitor-community/text-to-speech": "^5.0.0",
+    "mammoth": "^1.8.0",
+    "pdfjs-dist": "3.11.174",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2"
+  },
+  "scripts": {
+    "prebuild": "node scripts/copy-pdf-worker.js",
+    "prestart": "node scripts/copy-pdf-worker.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "cap:add": "npx cap add android && node scripts/patch-android.js",
+    "cap:sync": "npm run build && npx cap sync android && node scripts/patch-android.js",
+    "apk:debug": "npm run cap:sync && cd android && ./gradlew assembleDebug",
+    "aab:release": "npm run cap:sync && cd android && ./gradlew bundleRelease"
+  },
+  "eslintConfig": { "extends": ["react-app"] },
+  "browserslist": {
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+  }
+}
