@@ -1,0 +1,15 @@
+node_modules/
+build/
+.env
+.env.local
+.DS_Store
+npm-debug.log*
+public/pdf.worker.min.js
+
+# Capacitor / Android
+android/
+ios/
+*.keystore
+!android-resources/
+.gradle/
+local.properties
